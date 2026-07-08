@@ -1,15 +1,21 @@
-# Replace sapling with oak.
-setblock ~ ~ ~ minecraft:oak_sapling
+# If this sapling is part of a complete 2x2, let vanilla mechanics grow it.
+execute if block ~1 ~ ~ minecraft:dark_oak_sapling if block ~ ~ ~1 minecraft:dark_oak_sapling if block ~1 ~ ~1 minecraft:dark_oak_sapling run return 0
+execute if block ~-1 ~ ~ minecraft:dark_oak_sapling if block ~ ~ ~1 minecraft:dark_oak_sapling if block ~-1 ~ ~1 minecraft:dark_oak_sapling run return 0
+execute if block ~1 ~ ~ minecraft:dark_oak_sapling if block ~ ~ ~-1 minecraft:dark_oak_sapling if block ~1 ~ ~-1 minecraft:dark_oak_sapling run return 0
+execute if block ~-1 ~ ~ minecraft:dark_oak_sapling if block ~ ~ ~-1 minecraft:dark_oak_sapling if block ~-1 ~ ~-1 minecraft:dark_oak_sapling run return 0
+
+# Clear the sapling so the feature has a valid origin.
+setblock ~ ~ ~ minecraft:air
 
 # Grow an oak.
 place feature minecraft:oak
 
-# If nothing grew, restore the sapling.
-execute unless block ~ ~1 ~ minecraft:oak_log run setblock ~ ~ ~ minecraft:dark_oak_sapling
-execute unless block ~ ~1 ~ minecraft:oak_log run return 0
+# If nothing grew, restore the sapling and stop.
+execute unless block ~ ~ ~ minecraft:oak_log run setblock ~ ~ ~ minecraft:dark_oak_sapling
+execute unless block ~ ~ ~ minecraft:oak_log run return 0
 
 # Convert trunk.
-fill ~-2 ~ ~-2 ~2 ~20 ~2 minecraft:dark_oak_log replace minecraft:oak_log
+fill ~-1 ~ ~-1 ~1 ~8 ~1 minecraft:dark_oak_log replace minecraft:oak_log
 
 # Convert canopy.
-fill ~-8 ~ ~-8 ~8 ~20 ~8 minecraft:dark_oak_leaves replace minecraft:oak_leaves
+fill ~-3 ~2 ~-3 ~3 ~8 ~3 minecraft:dark_oak_leaves replace minecraft:oak_leaves
