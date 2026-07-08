@@ -1,0 +1,49 @@
+{
+  "criteria": {
+    "bonemeal_dark_oak": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": ["minecraft:dark_oak_sapling"]
+              }
+            }
+          }
+        ],
+        "item": {
+          "items": ["minecraft:bone_meal"]
+        }
+      }
+    },
+    "bonemeal_pale_oak": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": ["minecraft:pale_oak_sapling"]
+              }
+            }
+          }
+        ],
+        "item": {
+          "items": ["minecraft:bone_meal"]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bonemeal_dark_oak",
+      "bonemeal_pale_oak"
+    ]
+  ],
+  "rewards": {
+    "function": "farm_friendly:convert_tree"
+  }
+}
