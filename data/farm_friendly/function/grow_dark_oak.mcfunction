@@ -1,15 +1,15 @@
-# Replace the sapling with an oak so vanilla growth succeeds.
-
+# Replace sapling with oak.
 setblock ~ ~ ~ minecraft:oak_sapling
 
-# Grow a normal oak.
+# Grow an oak.
 place feature minecraft:oak
 
-# If the tree failed to generate, restore the original sapling.
+# If nothing grew, restore the sapling.
 execute unless block ~ ~1 ~ minecraft:oak_log run setblock ~ ~ ~ minecraft:dark_oak_sapling
 execute unless block ~ ~1 ~ minecraft:oak_log run return 0
 
-# Convert the generated tree.
+# Convert trunk.
+fill ~-2 ~ ~-2 ~2 ~20 ~2 minecraft:dark_oak_log replace minecraft:oak_log
 
-fill ~-4 ~ ~-4 ~4 ~12 ~4 minecraft:dark_oak_log replace minecraft:oak_log
-fill ~-5 ~ ~-5 ~5 ~14 ~5 minecraft:dark_oak_leaves replace minecraft:oak_leaves
+# Convert canopy.
+fill ~-8 ~ ~-8 ~8 ~20 ~8 minecraft:dark_oak_leaves replace minecraft:oak_leaves
