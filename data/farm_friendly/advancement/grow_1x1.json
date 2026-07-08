@@ -17,12 +17,14 @@
           }
         ],
         "item": {
-          "items": ["minecraft:bone_meal"]
+          "items": [
+            "minecraft:bone_meal"
+          ]
         }
       }
     }
   },
   "rewards": {
-    "function": "farm_friendly:check_and_place"
+    "function": "farm_friendly:convert_tree"
   }
 }
